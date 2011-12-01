@@ -14,12 +14,12 @@ def generatetopo(test):
 
     nxpoints = 10000
     nypoints = 6
-    xlower = 0.
-    xupper = 10.
+    xlower = -1000.
+    xupper = 1000.
     dx = (xupper-xlower)/(nxpoints-1)
     ylower = 0.
     yupper = (nypoints-1)*dx
-    slope = 0.2
+    slope = 0.1
     
     def maketopo():
        """
@@ -33,7 +33,7 @@ def generatetopo(test):
         """
         Linear Slope
         """
-        z = np.where(x>0, slope*x,0)  
+        z = np.where(x>xlower, slope*x,0)  
         return z
     
     maketopo()

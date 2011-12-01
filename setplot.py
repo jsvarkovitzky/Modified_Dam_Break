@@ -84,7 +84,7 @@ def setplot(plotdata):
     plotaxes = plotfigure.new_plotaxes('line')
     plotaxes.title = 'Surface'
     plotaxes.xlimits = 'auto'
-    plotaxes.ylimits = [0,3]
+    plotaxes.ylimits = [-120,120]
    
     # Water
     plotitem = plotaxes.new_plotitem(plot_type='1d_from_2d_data')

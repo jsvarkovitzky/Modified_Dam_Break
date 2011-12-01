@@ -57,10 +57,10 @@ def setrun(claw_pkg='geoclaw'):
     
 
     # Lower and upper edge of computational domain:
-    clawdata.xlower = 0.
-    clawdata.xupper = 10.
+    clawdata.xlower = -1000.
+    clawdata.xupper = 1000.
     # Number of grid cells:
-    clawdata.mx =  200
+    clawdata.mx =  2000
     clawdata.my =  2
     
     dx = (clawdata.xupper - clawdata.xlower) / clawdata.mx

@@ -4,7 +4,7 @@
 ###    and then "make .data"                        ####
 ########################################################
 
-200                       =: mx           (cells in x direction)
+2000                      =: mx           (cells in x direction)
 2                         =: my           (cells in y direction)
 -1                        =: mxnest       (max number of grid levels)
 4 2 4                     =: inratx       (refinement ratios)
@@ -37,10 +37,10 @@
 3 3 3                     =: mthlim       (limiter choice for each wave)
 
 0                         =: t0           (initial time)
-0.0                       =: xlower       (xlower)
-10.0                      =: xupper       (xupper)
+-1000.0                   =: xlower       (xlower)
+1000.0                    =: xupper       (xupper)
 0.0                       =: ylower       (ylower)
-0.005000000000000001      =: yupper       (yupper)
+0.1                       =: yupper       (yupper)
 
 2                         =: mbc          (number of ghost cells)
 1                         =: mthbc_xlower (type of BC at xlower)

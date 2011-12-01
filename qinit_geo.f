@@ -22,8 +22,8 @@ c      # been strored in qinitwork.
        do i=1-mbc,mx+mbc
           x = xlower + (i-0.5d0)*dx
           do j=1-mbc,my+mbc
-             if (x > 2) then
-                q(i,j,1) = 0.5d0 
+             if (x > 0) then
+                q(i,j,1) = 20.d0 
              else
                 q(i,j,1) = 0.0d0
              endif
