@@ -98,7 +98,7 @@ def setrun(claw_pkg='geoclaw'):
     # Note that the time integration stops after the final output time.
     # The solution at initial time t0 is always written in addition.
 
-    clawdata.outstyle = 1
+    clawdata.outstyle = 3
 
     if clawdata.outstyle==1:
         # Output nout frames at equally spaced times up to tfinal:
@@ -193,7 +193,7 @@ def setrun(claw_pkg='geoclaw'):
     #   3 => solid wall for systems where q(2) is normal velocity
     
     clawdata.mthbc_xlower = 1
-    clawdata.mthbc_xupper = 3
+    clawdata.mthbc_xupper = 0
     
     clawdata.mthbc_ylower = 3
     clawdata.mthbc_yupper = 3

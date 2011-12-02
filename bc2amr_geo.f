@@ -273,9 +273,14 @@ c
 c
   200 continue
 c     # user-specified boundary conditions go here in place of error output
-      write(6,*) 
-     &   '*** ERROR *** mthbc(2)=0 and no BCs specified in bc2amr'
-      stop
+      do i=ibeg,nrow
+          do j=1,ncol
+              aux(i,j,1) = aux(ibeg-1,j,1)
+              val(i,j,1) = 20.d0
+              val(i,j,2) = -20.d0 *0.981d0*time !val(ibeg-1,j,2)
+              val(i,j,3) = 0.d0 !val(ibeg-1,j,3)
+          enddo
+      enddo
       go to 299
 
   210 continue

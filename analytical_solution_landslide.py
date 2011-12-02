@@ -54,7 +54,7 @@ def analytical_sol(X,t):
         w[i] = h[i] + z[i]
         mom[i] = u[i]*h[i]
     return u,h,w,z,mom
-
+"""
 # for calculating error we use centroids C. Use L1 error formula.
 uC, hC, wC, zC, momC = analytical_sol(C,t_stop)
 
@@ -65,3 +65,5 @@ from pylab import plot, show, legend
 plot(X,w,X,z)
 legend(('stage','topography'))
 show()
+#return u,h,w,z,mom
+"""

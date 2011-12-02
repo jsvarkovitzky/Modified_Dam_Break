@@ -1,0 +1,32 @@
+  
+ Running GeoClaw2 with parameter values:
+  
+  
+ --------------------------------------------
+ SETQINIT:
+ -------------
+   iqinit = 0, no perturbation
+  
+ --------------------------------------------
+ SETREGIONS:
+ -----------
+   mregions =            2
+   minlevel, maxleve, tlow, thi, xlow, xhi, ylow, yhigh values:
+   2   2   0.000D+00   0.100D+10   0.000D+00   0.600D+01   0.000D+00   0.100D+01
+   3   3   0.000D+00   0.100D+10   0.000D+00   0.300D+01   0.000D+00   0.100D+01
+  
+ --------------------------------------------
+ SETGAUGES:
+ ---------
+   mgauges =            8
+  
+ --------------------------------------------
+ SETFIXEDGRIDS:
+ -----------
+   No fixed grids specified for output
+  
+ --------------------------------------------
+  
+    rest =  F    (restart?)
+    tstart =    0.0000000000000000     
+  

@@ -1,0 +1,4 @@
+from numpy import *
+from analytical_solution_landslide import *
+
+print "hi"

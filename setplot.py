@@ -10,12 +10,12 @@ import os
 
 slope = 1. / 19.85
 print "slope = ",slope
-
 outdir = os.path.abspath('_output')
 
 
     
 from numpy import loadtxt
+
 
 #--------------------------
 def setplot(plotdata):
@@ -79,6 +79,14 @@ def setplot(plotdata):
         B = eta - h
         return x,B
 
+    def analytic_soln():
+        from analytical_solution_landslide import analytical_sol
+        print "hi"
+        N = 100                            # number of cells
+        X = linspace(-1000.,1000.,N+1)     # vertices of cells
+        t = 15.
+        (u,h,w,z,mom) = analytical_sol(X,t)
+        return X,w
 
     # Set up for axes in this figure:
     plotaxes = plotfigure.new_plotaxes('line')
@@ -97,6 +105,13 @@ def setplot(plotdata):
     # Topography
     plotitem = plotaxes.new_plotitem(plot_type='1d_from_2d_data')
     plotitem.map_2d_to_1d = B_slice
+    plotitem.color = 'b'
+    plotitem.kwargs = {'linewidth':2}
+    plotitem.outdir = outdir
+
+   # Analytic Solution
+    plotitem = plotaxes.new_plotitem(plot_type='1d_plot')
+    plotitem.map = analytic_soln
     plotitem.color = 'r'
     plotitem.kwargs = {'linewidth':2}
     plotitem.outdir = outdir
@@ -146,7 +161,7 @@ def setplot(plotdata):
     plotdata.printfigs = True                # print figures
     plotdata.print_format = 'png'            # file format
     plotdata.print_framenos = 'all'          # list of frames to print
-    plotdata.print_gaugenos = [4,5,6,7,8,9,10,11]  # list of gauges to print
+    plotdata.print_gaugenos = []  # list of gauges to print
     plotdata.print_fignos = 'all'            # list of figures to print
     plotdata.html = True                     # create html files of plots?
     plotdata.html_homelink = '../README.html'   # pointer for top of index
