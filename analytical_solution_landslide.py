@@ -53,7 +53,9 @@ def analytical_sol(X,t):
         z[i] = bed_slope*X[i]
         w[i] = h[i] + z[i]
         mom[i] = u[i]*h[i]
+#    return w
     return u,h,w,z,mom
+
 """
 # for calculating error we use centroids C. Use L1 error formula.
 uC, hC, wC, zC, momC = analytical_sol(C,t_stop)

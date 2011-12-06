@@ -11,9 +11,9 @@
 2 2 2                     =: inraty       (refinement ratios)
 1 1 1                     =: inratt       (refinement ratios)
 
-5                         =: nout         (number of output times)
-3                         =: outstyle     (style of specifying output times)
-1 1                       =: iout         (output every iout steps)
+45                        =: nout         (number of output times)
+1                         =: outstyle     (style of specifying output times)
+15                        =: tfinal       (final time)
 
 0.0001                    =: dt_initial   (initial time step dt)
 1e+99                     =: dt_max       (max allowable dt)

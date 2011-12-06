@@ -7,9 +7,10 @@ function setplot is called to set the plot parameters.
     
 """ 
 import os
-
+from analytical_solution_landslide import analytical_sol
+from numpy import linspace
 slope = 1. / 19.85
-print "slope = ",slope
+#print "slope = ",slope
 outdir = os.path.abspath('_output')
 
 
@@ -79,43 +80,40 @@ def setplot(plotdata):
         B = eta - h
         return x,B
 
-    def analytic_soln():
-        from analytical_solution_landslide import analytical_sol
-        print "hi"
-        N = 100                            # number of cells
-        X = linspace(-1000.,1000.,N+1)     # vertices of cells
-        t = 15.
-        (u,h,w,z,mom) = analytical_sol(X,t)
-        return X,w
-
     # Set up for axes in this figure:
     plotaxes = plotfigure.new_plotaxes('line')
     plotaxes.title = 'Surface'
     plotaxes.xlimits = 'auto'
     plotaxes.ylimits = [-120,120]
    
+    # Topography
+    plotitem = plotaxes.new_plotitem(plot_type='1d_from_2d_data')
+    plotitem.map_2d_to_1d = B_slice
+    plotitem.color = 'g'
+    plotitem.kwargs = {'linewidth':2}
+    plotitem.outdir = outdir
+    
     # Water
     plotitem = plotaxes.new_plotitem(plot_type='1d_from_2d_data')
     plotitem.map_2d_to_1d = eta_slice
-    plotitem.color = 'g'
+    plotitem.color = 'b'
     plotitem.plotstyle = '-'
     plotitem.kwargs = {'linewidth':2}
     plotitem.outdir = outdir
 
-    # Topography
-    plotitem = plotaxes.new_plotitem(plot_type='1d_from_2d_data')
-    plotitem.map_2d_to_1d = B_slice
-    plotitem.color = 'b'
-    plotitem.kwargs = {'linewidth':2}
-    plotitem.outdir = outdir
-
    # Analytic Solution
-    plotitem = plotaxes.new_plotitem(plot_type='1d_plot')
-    plotitem.map = analytic_soln
-    plotitem.color = 'r'
-    plotitem.kwargs = {'linewidth':2}
-    plotitem.outdir = outdir
+    def plot_analytic(current_data):
+        import pylab 
+        
+        N = 2000                           # number of cells
+        X = linspace(-1000.,1000.,N+1)     # vertices of cells
+        t = current_data.t
+        (u,h,w,z,mom) = analytical_sol(X,t)     
+        pylab.plot(X,w,'r--')
+        pylab.legend(['Topography', 'GeoClaw Solution', 'Analytic Solution'], loc='upper left')
 
+    plotaxes.afteraxes = plot_analytic
+    
     #-----------------------------------------
     # Figures for gauges
     #-----------------------------------------
@@ -132,7 +130,6 @@ def setplot(plotdata):
     plotitem = plotaxes.new_plotitem(plot_type='1d_plot')
     plotitem.plot_var = 3
     plotitem.plotstyle = 'b-'
-
 
     #plotitem = plotaxes.new_plotitem(plot_type='1d_plot')
 
